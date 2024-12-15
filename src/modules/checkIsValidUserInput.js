@@ -9,18 +9,18 @@
  * @return {boolean} - True if the user input is valid, false otherwise
  */
 function checkIsValidUserInput(userInput) {
-  if (typeof userInput !== 'number') {
+  const notNumber = isNaN(+userInput);
+
+  if (notNumber) {
     return false;
   }
 
-  const string = userInput.toString();
-
-  if (string[0] === '0' || string.length !== 4) {
+  if (userInput[0] === '0' || userInput.length !== 4) {
     return false;
   }
 
-  for (let i = 0; i < string.length; i++) {
-    if (string.slice(i + 1).includes(string[i])) {
+  for (let i = 0; i < userInput.length; i++) {
+    if (userInput.slice(0, i).includes(userInput[i])) {
       return false;
     }
   }

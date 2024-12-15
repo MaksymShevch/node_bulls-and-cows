@@ -21,13 +21,11 @@ function getBullsAndCows(userInput, numberToGuess) {
   const userNumber = userInput.toString();
   const guessNumber = numberToGuess.toString();
 
-  for (let i = 0; i < userInput.length; i++) {
-    if (guessNumber.includes(userNumber[i])) {
-      result.cows++;
-    }
-
+  for (let i = 0; i < userNumber.length; i++) {
     if (userNumber[i] === guessNumber[i]) {
       result.bulls++;
+    } else if (guessNumber.includes(userNumber[i])) {
+      result.cows++;
     }
   }
 
