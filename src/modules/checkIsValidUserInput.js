@@ -9,7 +9,23 @@
  * @return {boolean} - True if the user input is valid, false otherwise
  */
 function checkIsValidUserInput(userInput) {
-  /* Write your code here */
+  if (typeof userInput !== 'number') {
+    return false;
+  }
+
+  const string = userInput.toString();
+
+  if (string[0] === '0' || string.length !== 4) {
+    return false;
+  }
+
+  for (let i = 0; i < string.length; i++) {
+    if (string.slice(i + 1).includes(string[i])) {
+      return false;
+    }
+  }
+
+  return true;
 }
 
 module.exports = {
